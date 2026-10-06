@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Policy Desk · Ask a question</title><link rel="stylesheet" href="/static/styles.css"><script type="module" src="/static/js/chat.js"></script></head>
+<body>
+<aside class="sidebar"><a class="brand" href="/"><span class="brand-mark">P</span> Policy Desk</a><div class="workspace-label">YOUR WORKSPACE</div><nav><a class="active" href="/" aria-current="page"><span>◌</span> Ask a question</a><a href="/admin"><span>▤</span> Policy library</a></nav><div class="sidebar-bottom"><span class="local-dot"></span> Local workspace<p>Your policies. Clear answers.</p></div></aside>
+<main><header class="topbar"><span>Customer support / <strong>Assistant</strong></span><span class="pill">MVP · Local</span></header>
+<section class="page chat-page"><div class="page-heading"><div><div class="eyebrow">POLICY ASSISTANT</div><h1>A little clarity,<br>right when you need it.</h1><p>Ask about returns, shipping, warranties, and more.<br>Every supported answer comes with its source.</p></div><div class="heading-decoration" aria-hidden="true">✳</div></div>
+<div id="readiness" class="notice" role="status">Connecting to your policy workspace…</div>
+<div id="messages" class="messages" aria-live="polite"><div id="welcome" class="welcome"><div class="welcome-icon">↗</div><h2>What can we help you find?</h2><p>Start with a question, or try one of these.</p><div class="suggestions"><button type="button" data-question="What is the return policy?">What is the return policy? <span>↗</span></button><button type="button" data-question="How long does shipping take?">How long does shipping take? <span>↗</span></button><button type="button" data-question="What does the warranty cover?">What does the warranty cover? <span>↗</span></button></div></div></div>
+<form id="chat-form" class="composer"><label for="question" class="sr-only">Your policy question</label><textarea id="question" rows="2" maxlength="2000" placeholder="Ask a question about your policies…" required></textarea><div class="composer-bottom"><span>Answers grounded in your policy library</span><button id="send" type="submit" class="primary" disabled>Ask question <span>↑</span></button></div></form><p class="fine-print">Questions are independent in this MVP. Check the cited policy for complete terms.</p>
+</section></main>
+</body></html>

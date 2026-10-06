@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Policy Desk · Policy library</title><link rel="stylesheet" href="/static/styles.css"><script type="module" src="/static/js/admin.js"></script></head>
+<body>
+<aside class="sidebar"><a class="brand" href="/"><span class="brand-mark">P</span> Policy Desk</a><div class="workspace-label">YOUR WORKSPACE</div><nav><a href="/"><span>◌</span> Ask a question</a><a class="active" href="/admin" aria-current="page"><span>▤</span> Policy library</a></nav><div class="sidebar-bottom"><span class="local-dot"></span> Local workspace<p>Your policies. Clear answers.</p></div></aside>
+<main><header class="topbar"><span>Customer support / <strong>Policy library</strong></span><span class="pill">Administrator · MVP</span></header>
+<section class="page"><div class="page-heading"><div><div class="eyebrow">KNOWLEDGE BASE</div><h1>Good answers start<br>with good policies.</h1><p>Build the library your assistant uses to answer.<br>Original documents and source details stay connected.</p></div><div class="heading-decoration" aria-hidden="true">▤</div></div>
+<div id="readiness" class="notice" role="status">Connecting to your policy workspace…</div>
+<div class="stats"><div><span id="document-count">0</span><p>Indexed documents</p></div><div><span id="chunk-count">0</span><p>Searchable passages</p></div><div><span>PDF / TXT</span><p>Supported formats</p></div></div>
+<form id="upload-form" class="upload-card"><div class="upload-icon">↑</div><h2>Add a policy document</h2><p>Text-based PDFs and UTF-8 text files. Up to <span id="upload-limit">10</span> MB per file.</p><label for="policy-file" class="sr-only">Choose policy file</label><input id="policy-file" type="file" accept=".pdf,.txt" required><button id="upload" class="primary" type="submit" disabled>Upload & index <span>↗</span></button><p class="fine-print">Scanned PDFs require OCR and are not supported yet.</p><div id="upload-status" role="status"></div></form>
+<div class="section-heading"><h2>Your documents</h2><button id="refresh" class="quiet" type="button">↻ Refresh</button></div><div id="library" class="library" aria-live="polite"></div>
+<details class="debug-panel"><summary>Retrieval inspector <span>DEVELOPER TOOL</span></summary><p>Check which passages match a question before generating an answer.</p><form id="retrieve-form"><label for="retrieve-question" class="sr-only">Retrieval question</label><input id="retrieve-question" maxlength="2000" placeholder="What is the return window?" required><button type="submit" class="secondary">Find passages</button></form><div id="retrieval-results"></div></details>
+<p class="fine-print">Local learning MVP. These screens do not enforce roles yet; JWT authentication comes next.</p>
+</section></main>
+</body></html>

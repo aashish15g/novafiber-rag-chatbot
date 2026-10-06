@@ -1,0 +1,9 @@
+fastapi[standard]
+python-multipart
+pydantic-settings
+qdrant-client
+sentence-transformers
+pypdf
+google-genai
+pytest
+httpx
