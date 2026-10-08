@@ -1,4 +1,6 @@
-import {api, element, sourceCard, watchReadiness} from './common.js';
+import {api, element, mountShell, sourceCard, watchReadiness} from './common.js';
+
+mountShell();
 
 const form = document.getElementById('chat-form');
 const input = document.getElementById('question');
@@ -15,10 +17,11 @@ watchReadiness(state => {
 document.querySelectorAll('[data-question]').forEach(button => button.addEventListener('click', () => {
   input.value = button.dataset.question;
   input.focus();
+  input.scrollIntoView({block: 'center'});
 }));
 
 input.addEventListener('keydown', event => {
-  if (event.key === 'Enter' && !event.shiftKey) {
+  if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
     event.preventDefault();
     if (!busy && ready) form.requestSubmit();
   }
@@ -29,14 +32,15 @@ form.addEventListener('submit', async event => {
   const question = input.value.trim();
   if (!question || busy || !ready) return;
   busy = true;
+  form.setAttribute('aria-busy', 'true');
   button.disabled = true;
   document.getElementById('welcome')?.remove();
   messages.append(element('div', 'message question', question));
   input.value = '';
   const answer = element('div', 'message answer');
-  answer.append(element('div', 'answer-label', 'POLICY DESK'), element('div', 'answer-copy', 'Finding relevant policies and preparing your answer…'));
+  answer.append(element('div', 'answer-label', 'NOVAFIBER · NOVA'), element('div', 'answer-copy', 'Checking the service documents and preparing your answer…'));
   messages.append(answer);
-  answer.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+  answer.scrollIntoView({block: 'nearest'});
   try {
     const result = await api('/api/chat', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({question})});
     answer.querySelector('.answer-copy').textContent = result.answer;
@@ -46,7 +50,9 @@ form.addEventListener('submit', async event => {
       answer.append(sources);
     }
   } catch (error) {
-    answer.querySelector('.answer-copy').textContent = error.message;
+    answer.querySelector('.answer-copy').textContent = error.status >= 500
+      ? 'Nova couldn’t get an answer right now. Please try again in a moment.'
+      : error instanceof TypeError ? 'We couldn’t reach Nova. Check your connection and try again.' : error.message;
     answer.classList.add('error-text');
     const retry = element('button', 'secondary', 'Retry this question');
     retry.type = 'button';
@@ -54,6 +60,7 @@ form.addEventListener('submit', async event => {
     answer.append(retry);
   } finally {
     busy = false;
+    form.setAttribute('aria-busy', 'false');
     button.disabled = !ready;
     input.focus();
   }

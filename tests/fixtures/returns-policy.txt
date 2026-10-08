@@ -1,7 +1,0 @@
-DEMO RETURNS POLICY
-
-Unopened products can be returned within 30 days of delivery. Customers must provide their receipt or order confirmation. Opened products are not eligible for a standard return.
-
-To start a return, contact customer support with the order number. Standard refunds are issued to the original payment method within 5 business days after the returned product is inspected.
-
-This is a synthetic policy created for testing Policy Desk. It does not describe any real business.

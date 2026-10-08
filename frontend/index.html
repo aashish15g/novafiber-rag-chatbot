@@ -1,12 +1,59 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Policy Desk · Ask a question</title><link rel="stylesheet" href="/static/styles.css"><script type="module" src="/static/js/chat.js"></script></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b3b">
+  <meta name="description" content="Get clear answers about your NovaFiber home internet, with support grounded in our service policies.">
+  <title>NovaFiber · Internet support, made simple</title>
+  <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script type="module" src="/static/js/chat.js"></script>
+</head>
 <body>
-<aside class="sidebar"><a class="brand" href="/"><span class="brand-mark">P</span> Policy Desk</a><div class="workspace-label">YOUR WORKSPACE</div><nav><a class="active" href="/" aria-current="page"><span>◌</span> Ask a question</a><a href="/admin"><span>▤</span> Policy library</a></nav><div class="sidebar-bottom"><span class="local-dot"></span> Local workspace<p>Your policies. Clear answers.</p></div></aside>
-<main><header class="topbar"><span>Customer support / <strong>Assistant</strong></span><span class="pill">MVP · Local</span></header>
-<section class="page chat-page"><div class="page-heading"><div><div class="eyebrow">POLICY ASSISTANT</div><h1>A little clarity,<br>right when you need it.</h1><p>Ask about returns, shipping, warranties, and more.<br>Every supported answer comes with its source.</p></div><div class="heading-decoration" aria-hidden="true">✳</div></div>
-<div id="readiness" class="notice" role="status">Connecting to your policy workspace…</div>
-<div id="messages" class="messages" aria-live="polite"><div id="welcome" class="welcome"><div class="welcome-icon">↗</div><h2>What can we help you find?</h2><p>Start with a question, or try one of these.</p><div class="suggestions"><button type="button" data-question="What is the return policy?">What is the return policy? <span>↗</span></button><button type="button" data-question="How long does shipping take?">How long does shipping take? <span>↗</span></button><button type="button" data-question="What does the warranty cover?">What does the warranty cover? <span>↗</span></button></div></div></div>
-<form id="chat-form" class="composer"><label for="question" class="sr-only">Your policy question</label><textarea id="question" rows="2" maxlength="2000" placeholder="Ask a question about your policies…" required></textarea><div class="composer-bottom"><span>Answers grounded in your policy library</span><button id="send" type="submit" class="primary" disabled>Ask question <span>↑</span></button></div></form><p class="fine-print">Questions are independent in this MVP. Check the cited policy for complete terms.</p>
-</section></main>
-</body></html>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main-content" class="customer-page">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> YOUR CONNECTION. OUR COMMITMENT.</p>
+        <h1 id="hero-title">Internet connects you.<br><span>We’re here to help.</span></h1>
+        <p class="hero-description">From your first setup to your next billing question,<br class="desktop-break"> find a little clarity with NovaFiber support.</p>
+        <div class="hero-assurances"><span><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#check"></use></svg> Straightforward answers</span><span><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#document"></use></svg> Sources you can check</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><img src="/static/assets/fiber-network.svg" alt="" width="470" height="300"><span class="art-caption"><span></span> A little closer. A lot more connected.</span></div>
+    </section>
+    <div class="support-layout container">
+      <section class="assistant-panel" aria-labelledby="assistant-title">
+        <header class="assistant-header"><div class="assistant-identity"><span class="assistant-avatar"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#nova"></use></svg></span><div><h2 id="assistant-title">Meet Nova</h2><p>Your NovaFiber support assistant</p></div></div><span id="assistant-status" class="availability"><span class="status-dot"></span><span id="assistant-status-text">Connecting</span></span></header>
+        <div id="readiness" class="notice" role="status">Getting your support assistant ready…</div>
+        <div id="messages" class="messages" aria-live="polite" aria-relevant="additions text">
+          <div id="welcome" class="welcome">
+            <span class="welcome-orbit" aria-hidden="true"><svg class="icon"><use href="/static/assets/icons.svg#spark"></use></svg></span>
+            <h3>Let’s get you connected.</h3>
+            <p>What can I help you understand today?</p>
+            <div class="suggestions">
+              <button type="button" data-question="How can I troubleshoot a slow Wi-Fi connection?"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#wifi"></use></svg> My Wi-Fi feels slow <svg class="icon arrow" aria-hidden="true"><use href="/static/assets/icons.svg#arrow"></use></svg></button>
+              <button type="button" data-question="How does NovaFiber billing work, and what charges should I expect?"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#billing"></use></svg> Help me understand billing <svg class="icon arrow" aria-hidden="true"><use href="/static/assets/icons.svg#arrow"></use></svg></button>
+              <button type="button" data-question="What should I expect during my NovaFiber installation?"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#router"></use></svg> Getting ready for installation <svg class="icon arrow" aria-hidden="true"><use href="/static/assets/icons.svg#arrow"></use></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="composer-area"><form id="chat-form" class="composer"><label for="question" class="sr-only">Ask Nova a question</label><textarea id="question" rows="2" maxlength="2000" placeholder="Ask about your NovaFiber internet…" required></textarea><div class="composer-bottom"><span><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#shield"></use></svg> Answers backed by service policies</span><button id="send" type="submit" class="primary" disabled>Send question <svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#send"></use></svg></button></div></form><p class="composer-note">Check the linked source for full terms. Please leave out passwords and account details.</p></div>
+      </section>
+      <aside id="support-topics" class="support-rail" aria-labelledby="topics-title">
+        <div class="rail-heading"><p class="eyebrow">A GOOD PLACE TO START</p><h2 id="topics-title">How can we help?</h2><p>Pick a topic to start your question.</p></div>
+        <div class="topic-list">
+          <button class="topic-card" type="button" data-question="How can I troubleshoot my NovaFiber Wi-Fi connection?"><span class="topic-icon"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#wifi"></use></svg></span><span><strong>Wi-Fi & connection</strong><small>Speeds, routers, and staying connected</small></span><svg class="icon topic-arrow" aria-hidden="true"><use href="/static/assets/icons.svg#chevron"></use></svg></button>
+          <button class="topic-card" type="button" data-question="What are NovaFiber's billing and payment policies?"><span class="topic-icon"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#billing"></use></svg></span><span><strong>Billing & payments</strong><small>Understand charges and payment terms</small></span><svg class="icon topic-arrow" aria-hidden="true"><use href="/static/assets/icons.svg#chevron"></use></svg></button>
+          <button class="topic-card" type="button" data-question="How do NovaFiber installation and equipment setup work?"><span class="topic-icon"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#router"></use></svg></span><span><strong>Setup & installation</strong><small>Your first steps with NovaFiber</small></span><svg class="icon topic-arrow" aria-hidden="true"><use href="/static/assets/icons.svg#chevron"></use></svg></button>
+          <button class="topic-card" type="button" data-question="What are the policies for changing or cancelling my NovaFiber internet service?"><span class="topic-icon"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#service"></use></svg></span><span><strong>Your plan & service</strong><small>Service changes and policy questions</small></span><svg class="icon topic-arrow" aria-hidden="true"><use href="/static/assets/icons.svg#chevron"></use></svg></button>
+        </div>
+        <div class="expectation-card"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#document"></use></svg><h3>Clear answers. Real context.</h3><p>Nova points you to the policy behind an answer, so you can read the details for yourself.</p><div class="expectation-rule"></div><p class="account-note">Need account-specific help? Nova explains policies, but can’t access your bill, book a technician, or check a live outage.</p></div>
+      </aside>
+    </div>
+    <section class="connection-strip container"><span class="strip-mark" aria-hidden="true"><svg class="icon"><use href="/static/assets/icons.svg#nova"></use></svg></span><div><h2>More than a connection.</h2><p>A simpler way to find the support you need.</p></div><span class="strip-signature">That’s the NovaFiber way.</span></section>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>

@@ -19,13 +19,12 @@ def documents(request: Request):
 async def upload(request: Request, file: UploadFile = File(...)):
     service = request.app.state.rag
     service.require_ready()
-    data = bytearray()
     try:
-        while block := await file.read(1024 * 1024):
-            data.extend(block)
-            if len(data) > service.settings.max_upload_mb * 1024 * 1024:
-                raise HTTPException(413, f"Maximum upload size is {service.settings.max_upload_mb} MB.")
-        return await run_in_threadpool(service.ingest, file.filename or "document", bytes(data))
+        limit = service.settings.max_upload_mb * 1024 * 1024
+        data = await file.read(limit + 1)
+        if len(data) > limit:
+            raise HTTPException(413, f"Maximum upload size is {service.settings.max_upload_mb} MB.")
+        return await run_in_threadpool(service.ingest, file.filename or "document", data)
     except DocumentError as exc:
         raise HTTPException(422, str(exc)) from exc
     finally:
@@ -47,3 +46,14 @@ def source(document_id: UUID, request: Request):
     media = "application/pdf" if path.suffix == ".pdf" else "text/plain; charset=utf-8"
     return FileResponse(path, filename=record["filename"], media_type=media,
                         content_disposition_type="inline", headers={"X-Content-Type-Options": "nosniff"})
+
+
+@router.get("/{document_id}/chunks/{chunk_id}")
+def passage(document_id: UUID, chunk_id: UUID, request: Request):
+    try:
+        result = request.app.state.rag.passage(str(document_id), str(chunk_id))
+    except DocumentError as exc:
+        raise HTTPException(409, str(exc)) from exc
+    if result is None:
+        raise HTTPException(404, "Source passage is unavailable.")
+    return result

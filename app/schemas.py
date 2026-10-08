@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field, field_validator
+from typing import Any
 
 
 class QuestionRequest(BaseModel):
@@ -21,6 +22,11 @@ class Source(BaseModel):
     chunk_index: int
     excerpt: str
     source_url: str
+    passage_url: str | None = None
+    chunk_id: str | None = None
+    char_start: int | None = None
+    char_end: int | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 class Passage(Source):
@@ -47,6 +53,8 @@ class Document(BaseModel):
     chunk_count: int
     error: str | None
     source_url: str
+    searchable: bool
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 class UploadResponse(BaseModel):

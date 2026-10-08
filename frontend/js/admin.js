@@ -1,8 +1,11 @@
-import {api, element, sourceCard, watchReadiness} from './common.js';
+import {api, element, icon, mountShell, sourceCard, watchReadiness} from './common.js';
+
+mountShell({admin: true});
 
 const library = document.getElementById('library');
 const uploadButton = document.getElementById('upload');
 const status = document.getElementById('upload-status');
+const statusLabels = {ready: 'Ready', failed: 'Needs attention', processing: 'Indexing', deleting: 'Removing'};
 let ready = false;
 let busy = false;
 let maxUploadMB = 10;
@@ -12,25 +15,29 @@ watchReadiness(state => {
   maxUploadMB = state.max_upload_mb || 10;
   document.getElementById('upload-limit').textContent = maxUploadMB;
   uploadButton.disabled = busy || !ready;
-});
+}, {admin: true});
 
 async function refresh() {
   try {
     const documents = await api('/api/documents');
-    const indexed = documents.filter(doc => doc.status === 'ready');
+    const indexed = documents.filter(doc => doc.searchable);
     document.getElementById('document-count').textContent = indexed.length;
     document.getElementById('chunk-count').textContent = indexed.reduce((sum, doc) => sum + doc.chunk_count, 0);
     library.replaceChildren();
-    if (!documents.length) library.append(element('div', 'empty-library', 'Your library is waiting. Upload your first policy to get started.'));
+    if (!documents.length) library.append(element('div', 'empty-library', 'No service documents yet. Add NovaFiber’s first policy to get started.'));
     documents.forEach(doc => {
       const row = element('div', 'document-row');
-      row.append(element('div', 'file-icon', '▤'));
+      const fileIcon = element('div', 'file-icon');
+      fileIcon.append(icon('document'));
+      row.append(fileIcon);
       const info = element('div', 'document-info');
       const name = element(doc.status === 'ready' ? 'a' : 'div', 'document-name', doc.filename);
       if (doc.status === 'ready') { name.href = doc.source_url; name.target = '_blank'; name.rel = 'noopener noreferrer'; }
       info.append(name, element('div', 'document-meta', `${doc.chunk_count} passages · ${new Date(doc.uploaded_at).toLocaleString()}`));
+      if (doc.metadata?.article_id) info.append(element('div', 'document-meta', `${doc.metadata.article_id} · Version ${doc.metadata.version}`));
+      if (doc.status === 'ready' && !doc.searchable) info.append(element('div', 'document-meta', 'Preserved document · excluded from Nova’s answers'));
       if (doc.error) info.append(element('div', 'error-text', doc.error));
-      row.append(info, element('span', `status-tag ${doc.status}`, doc.status));
+      row.append(info, element('span', `status-tag ${doc.status}`, doc.status === 'ready' && !doc.searchable ? 'Not searched' : statusLabels[doc.status] || doc.status));
       const remove = element('button', 'delete', 'Delete');
       remove.type = 'button';
       remove.addEventListener('click', async () => {

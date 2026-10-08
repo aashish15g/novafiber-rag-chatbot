@@ -1,0 +1,1064 @@
+{
+  "schema_version": 1,
+  "company": "NovaFiber",
+  "synthetic": true,
+  "locale": "en-US",
+  "currency": "USD",
+  "documents": [
+    {
+      "article_id": "NF-TS-004",
+      "title": "Frequent disconnections: capture and isolate the fault",
+      "category": "troubleshooting",
+      "topic": "intermittent_connection",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "approved_support",
+      "customer_chatbot_allowed": true,
+      "owner": "Technical Support",
+      "applies_to": "NovaFiber residential fiber and supplied equipment",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-002",
+        "NF-TS-003",
+        "NF-TS-005",
+        "NF-EQ-004"
+      ],
+      "source_markdown": "sources/customer_approved/01_Troubleshooting/Frequent_Disconnections.md",
+      "source_pdf": "pdf/customer_approved/01_Troubleshooting/Frequent_Disconnections.pdf",
+      "source": "Frequent_Disconnections.pdf",
+      "file_sha256": "9e6eb5f16dc72b16aad5fb3070669bd30e323b8d2bd3dac45e57ff9ad7aa20ed",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Recognize an intermittent connection",
+          "page": 1
+        },
+        {
+          "heading": "2. Capture a short incident record",
+          "page": 1
+        },
+        {
+          "heading": "3. Choose a branch using concurrent symptoms",
+          "page": 1
+        },
+        {
+          "heading": "4. Use limited corrective checks",
+          "page": 2
+        },
+        {
+          "heading": "5. Escalate repeated or unsafe symptoms",
+          "page": 2
+        },
+        {
+          "heading": "6. Confirm improvement without inventing a cause",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-TS-001",
+      "title": "No internet connection: safe first checks",
+      "category": "troubleshooting",
+      "topic": "complete_connection_loss",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "approved_support",
+      "customer_chatbot_allowed": true,
+      "owner": "Technical Support",
+      "applies_to": "NovaFiber residential service; NF-ONT-100 and NF-RTR-200",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-002",
+        "NF-TS-005",
+        "NF-EQ-001",
+        "NF-EQ-004"
+      ],
+      "source_markdown": "sources/customer_approved/01_Troubleshooting/No_Internet_Connection.md",
+      "source_pdf": "pdf/customer_approved/01_Troubleshooting/No_Internet_Connection.pdf",
+      "source": "No_Internet_Connection.pdf",
+      "file_sha256": "46e9b6553826d6889ba468bdf218683feb374461041bc6198f1bb697e42a2c5f",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Recognize a complete connection loss",
+          "page": 1
+        },
+        {
+          "heading": "2. Record symptoms before changing anything",
+          "page": 1
+        },
+        {
+          "heading": "3. Select the correct diagnostic path",
+          "page": 1
+        },
+        {
+          "heading": "4. Restart safely only when permitted",
+          "page": 2
+        },
+        {
+          "heading": "5. Request help when checks fail",
+          "page": 2
+        },
+        {
+          "heading": "6. Expected outcome and evidence",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-TS-002",
+      "title": "Red LOS or abnormal PON: optical connection faults",
+      "category": "troubleshooting",
+      "topic": "optical_signal",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "approved_support",
+      "customer_chatbot_allowed": true,
+      "owner": "Technical Support",
+      "applies_to": "NovaFiber NF-ONT-100 optical network terminal",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-001",
+        "NF-EQ-001",
+        "NF-EQ-004"
+      ],
+      "source_markdown": "sources/customer_approved/01_Troubleshooting/Red_LOS_and_PON_Errors.md",
+      "source_pdf": "pdf/customer_approved/01_Troubleshooting/Red_LOS_and_PON_Errors.pdf",
+      "source": "Red_LOS_and_PON_Errors.pdf",
+      "file_sha256": "9da106c2fd9ec12d874f492f0909c77f4bc8997405aa4f3f639fae1f5f705fa0",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Identify the optical symptom",
+          "page": 1
+        },
+        {
+          "heading": "2. Ask safe diagnostic questions",
+          "page": 1
+        },
+        {
+          "heading": "3. Check power and visible cable routing",
+          "page": 1
+        },
+        {
+          "heading": "4. Avoid unhelpful or unsafe resets",
+          "page": 2
+        },
+        {
+          "heading": "5. Escalate a persistent optical fault",
+          "page": 2
+        },
+        {
+          "heading": "6. Recovery and limitations",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-TS-003",
+      "title": "Slow internet speeds: distinguish Wi-Fi from line performance",
+      "category": "troubleshooting",
+      "topic": "throughput",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "approved_support",
+      "customer_chatbot_allowed": true,
+      "owner": "Technical Support",
+      "applies_to": "NovaFiber residential plans and NF-RTR-200",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-001",
+        "NF-EQ-003",
+        "NF-TS-004"
+      ],
+      "source_markdown": "sources/customer_approved/01_Troubleshooting/Slow_Internet_Speeds.md",
+      "source_pdf": "pdf/customer_approved/01_Troubleshooting/Slow_Internet_Speeds.pdf",
+      "source": "Slow_Internet_Speeds.pdf",
+      "file_sha256": "7011cc701e62cf1c451bcb66a5c5737c1a2604d02252e7b22fe87b7bbbb24fe4",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Define the performance problem",
+          "page": 1
+        },
+        {
+          "heading": "2. Establish a useful baseline",
+          "page": 1
+        },
+        {
+          "heading": "3. Compare repeatable measurements",
+          "page": 1
+        },
+        {
+          "heading": "4. Diagnose Wi-Fi-specific slowness",
+          "page": 2
+        },
+        {
+          "heading": "5. Report recurring evening degradation",
+          "page": 2
+        },
+        {
+          "heading": "6. Escalation and next evidence",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-TS-005",
+      "title": "Wi-Fi connected but websites do not load",
+      "category": "troubleshooting",
+      "topic": "wifi_no_internet",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "approved_support",
+      "customer_chatbot_allowed": true,
+      "owner": "Technical Support",
+      "applies_to": "NovaFiber NF-RTR-200 and household Wi-Fi devices",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-001",
+        "NF-TS-002",
+        "NF-EQ-002",
+        "NF-EQ-003"
+      ],
+      "source_markdown": "sources/customer_approved/01_Troubleshooting/WiFi_Connected_No_Internet.md",
+      "source_pdf": "pdf/customer_approved/01_Troubleshooting/WiFi_Connected_No_Internet.pdf",
+      "source": "WiFi_Connected_No_Internet.pdf",
+      "file_sha256": "b7c652263e4166d544cd0373562b2afc96a096b7bca31f60ff56734e6b48cd41",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Understand the symptom",
+          "page": 1
+        },
+        {
+          "heading": "2. Compare one device with the whole home",
+          "page": 1
+        },
+        {
+          "heading": "3. Check optical and router indicators",
+          "page": 1
+        },
+        {
+          "heading": "4. Use a wired comparison when available",
+          "page": 2
+        },
+        {
+          "heading": "5. Escalate with relevant evidence",
+          "page": 2
+        },
+        {
+          "heading": "6. Validate recovery and follow related guidance",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-EQ-004",
+      "title": "Fiber cable and equipment safety",
+      "category": "equipment",
+      "topic": "optical_and_electrical_safety",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Network Equipment",
+      "applies_to": "NovaFiber residential optical installation and supplied equipment",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-002",
+        "NF-EQ-001",
+        "NF-GF-002"
+      ],
+      "source_markdown": "sources/customer_approved/02_Equipment/Fiber_Cable_Safety.md",
+      "source_pdf": "pdf/customer_approved/02_Equipment/Fiber_Cable_Safety.pdf",
+      "source": "Fiber_Cable_Safety.pdf",
+      "file_sha256": "3c4991916634d65297d90c406c39908e7af39c6ad014044458ebe9a9d1f61ec8",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Leave optical work to technicians",
+          "page": 1
+        },
+        {
+          "heading": "2. Prevent ordinary cable damage",
+          "page": 1
+        },
+        {
+          "heading": "3. Recognize stop conditions",
+          "page": 1
+        },
+        {
+          "heading": "4. Safe observation and reporting",
+          "page": 2
+        },
+        {
+          "heading": "5. Power and ventilation precautions",
+          "page": 2
+        },
+        {
+          "heading": "6. Moves and service visits",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-EQ-001",
+      "title": "ONT and router LED reference",
+      "category": "equipment",
+      "topic": "indicator_lights",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Network Equipment",
+      "applies_to": "Fictional NF-ONT-100 and NF-RTR-200 only",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-001",
+        "NF-TS-002",
+        "NF-EQ-002",
+        "NF-EQ-004"
+      ],
+      "source_markdown": "sources/customer_approved/02_Equipment/ONT_Router_LED_Indicators.md",
+      "source_pdf": "pdf/customer_approved/02_Equipment/ONT_Router_LED_Indicators.pdf",
+      "source": "ONT_Router_LED_Indicators.pdf",
+      "file_sha256": "e346eb2021dc76369d962866449bb3376db18d227ab948394ed7da8cd161ed50",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Device scope and interpretation",
+          "page": 1
+        },
+        {
+          "heading": "2. NF-ONT-100 Power and optical lights",
+          "page": 1
+        },
+        {
+          "heading": "3. NF-ONT-100 LAN indication",
+          "page": 1
+        },
+        {
+          "heading": "4. NF-RTR-200 WAN and Internet lights",
+          "page": 2
+        },
+        {
+          "heading": "5. NF-RTR-200 Wi-Fi and startup behavior",
+          "page": 2
+        },
+        {
+          "heading": "6. When to stop and request support",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-EQ-002",
+      "title": "Router setup and customer configuration",
+      "category": "equipment",
+      "topic": "router_setup",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Network Equipment",
+      "applies_to": "Fictional NF-RTR-200 with NF-ONT-100",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-EQ-001",
+        "NF-EQ-003",
+        "NF-EQ-004",
+        "NF-TS-005"
+      ],
+      "source_markdown": "sources/customer_approved/02_Equipment/Router_Setup_and_Configuration.md",
+      "source_pdf": "pdf/customer_approved/02_Equipment/Router_Setup_and_Configuration.pdf",
+      "source": "Router_Setup_and_Configuration.pdf",
+      "file_sha256": "053a200665fa20825e5bbd18d47e17f716ab7d41d7be1fddeb2f2e0b32815264",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. What customers may configure",
+          "page": 1
+        },
+        {
+          "heading": "2. Connect equipment after installation",
+          "page": 1
+        },
+        {
+          "heading": "3. Choose safe placement and initial Wi-Fi",
+          "page": 1
+        },
+        {
+          "heading": "4. Change customer settings locally",
+          "page": 2
+        },
+        {
+          "heading": "5. Guest access and equipment replacement",
+          "page": 2
+        },
+        {
+          "heading": "6. Restart versus factory reset",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-EQ-003",
+      "title": "Choosing 2.4 GHz or 5 GHz Wi-Fi",
+      "category": "equipment",
+      "topic": "wifi_coverage_bands",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Network Equipment",
+      "applies_to": "Fictional dual-band NF-RTR-200 and compatible devices",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-TS-003",
+        "NF-TS-005",
+        "NF-EQ-002"
+      ],
+      "source_markdown": "sources/customer_approved/02_Equipment/WiFi_2.4GHz_5GHz_Guide.md",
+      "source_pdf": "pdf/customer_approved/02_Equipment/WiFi_2.4GHz_5GHz_Guide.pdf",
+      "source": "WiFi_2.4GHz_5GHz_Guide.pdf",
+      "file_sha256": "9611c453bec917e1e86f570701b41c0cc93163a55d8a36a79de577a7c1f44866",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Understand the band trade-off",
+          "page": 1
+        },
+        {
+          "heading": "2. Select the band for the task",
+          "page": 1
+        },
+        {
+          "heading": "3. Test coverage fairly",
+          "page": 1
+        },
+        {
+          "heading": "4. Improve placement before buying equipment",
+          "page": 2
+        },
+        {
+          "heading": "5. Extenders, mesh, and compatibility",
+          "page": 2
+        },
+        {
+          "heading": "6. When the problem needs another article",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-BP-001",
+      "title": "Residential broadband plans and included service",
+      "category": "billing_and_plans",
+      "topic": "plan_catalog",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Product and Billing",
+      "applies_to": "Fictional NovaFiber US residential month-to-month service",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-002",
+        "NF-BP-003",
+        "NF-GF-001",
+        "NF-GF-003"
+      ],
+      "source_markdown": "sources/customer_approved/03_Billing_and_Plans/Broadband_Plans.md",
+      "source_pdf": "pdf/customer_approved/03_Billing_and_Plans/Broadband_Plans.pdf",
+      "source": "Broadband_Plans.pdf",
+      "file_sha256": "3257f2f3397eb2691855ff381dc9da64bbd80fe358b51160bb194ae4109e0084",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Current plan catalog",
+          "page": 1
+        },
+        {
+          "heading": "2. Charges and equipment included",
+          "page": 1
+        },
+        {
+          "heading": "3. Speed and service qualifications",
+          "page": 1
+        },
+        {
+          "heading": "4. Billing and fair service use",
+          "page": 2
+        },
+        {
+          "heading": "5. Plan changes",
+          "page": 2
+        },
+        {
+          "heading": "6. Other policies and exceptions",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-BP-002",
+      "title": "Payment, invoice, and billing questions",
+      "category": "billing_and_plans",
+      "topic": "payment_and_disputes",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Billing Support",
+      "applies_to": "NovaFiber residential monthly invoices",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-001",
+        "NF-BP-003",
+        "NF-BP-004"
+      ],
+      "source_markdown": "sources/customer_approved/03_Billing_and_Plans/Payment_and_Billing_FAQ.md",
+      "source_pdf": "pdf/customer_approved/03_Billing_and_Plans/Payment_and_Billing_FAQ.pdf",
+      "source": "Payment_and_Billing_FAQ.pdf",
+      "file_sha256": "e3280a740137a6de4ac6fd5b4c5e6cf70f0d7959d6b4da72335aa89a62a004fc",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Invoice timing and payment methods",
+          "page": 1
+        },
+        {
+          "heading": "2. Read the first invoice",
+          "page": 1
+        },
+        {
+          "heading": "3. Payment debited but invoice still unpaid",
+          "page": 1
+        },
+        {
+          "heading": "4. Failed attempts and duplicate payments",
+          "page": 2
+        },
+        {
+          "heading": "5. Billing dispute procedure",
+          "page": 2
+        },
+        {
+          "heading": "6. Refunds, cancellation, and status checks",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-BP-003",
+      "title": "Cancellation, refunds, outage credits, and equipment returns",
+      "category": "billing_and_plans",
+      "topic": "refunds_cancellation_credits",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Billing Support",
+      "applies_to": "NovaFiber residential month-to-month service",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-001",
+        "NF-BP-002",
+        "NF-GF-001",
+        "NF-GF-002"
+      ],
+      "source_markdown": "sources/customer_approved/03_Billing_and_Plans/Refund_and_Cancellation_Policy.md",
+      "source_pdf": "pdf/customer_approved/03_Billing_and_Plans/Refund_and_Cancellation_Policy.pdf",
+      "source": "Refund_and_Cancellation_Policy.pdf",
+      "file_sha256": "3fb2aaea32358ff4f48723e9dfe2d072f0ceba6e85f896ed9b1ba554d97d2b34",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Submit an authenticated cancellation request",
+          "page": 1
+        },
+        {
+          "heading": "2. Calculate unused subscription refunds",
+          "page": 1
+        },
+        {
+          "heading": "3. Return loaned equipment",
+          "page": 1
+        },
+        {
+          "heading": "4. Verified outage credit eligibility",
+          "page": 2
+        },
+        {
+          "heading": "5. Request and settlement timing",
+          "page": 2
+        },
+        {
+          "heading": "6. Orders before activation and policy limits",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-BP-004",
+      "title": "Service suspension and reconnection",
+      "category": "billing_and_plans",
+      "topic": "nonpayment_suspension",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Billing Support",
+      "applies_to": "NovaFiber residential invoices and verified account actions",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-002",
+        "NF-BP-003",
+        "NF-TS-001"
+      ],
+      "source_markdown": "sources/customer_approved/03_Billing_and_Plans/Service_Suspension_Policy.md",
+      "source_pdf": "pdf/customer_approved/03_Billing_and_Plans/Service_Suspension_Policy.pdf",
+      "source": "Service_Suspension_Policy.pdf",
+      "file_sha256": "a35e4bec28c4f332ab6a020353bace8694b9f06da65b4ab983019bddc34d60ac",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Nonpayment timeline",
+          "page": 1
+        },
+        {
+          "heading": "2. Disputes and pending payments",
+          "page": 1
+        },
+        {
+          "heading": "3. What suspension means",
+          "page": 1
+        },
+        {
+          "heading": "4. Reconnection after settled payment",
+          "page": 2
+        },
+        {
+          "heading": "5. Security and misuse cases",
+          "page": 2
+        },
+        {
+          "heading": "6. Customer options and limits",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-GF-001",
+      "title": "Account changes, plan upgrades, and router replacement",
+      "category": "general_faqs",
+      "topic": "account_and_plan_changes",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Customer Care",
+      "applies_to": "NovaFiber residential account holders",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-001",
+        "NF-BP-002",
+        "NF-BP-003",
+        "NF-EQ-002"
+      ],
+      "source_markdown": "sources/customer_approved/05_General_FAQs/Account_Management_FAQ.md",
+      "source_pdf": "pdf/customer_approved/05_General_FAQs/Account_Management_FAQ.pdf",
+      "source": "Account_Management_FAQ.pdf",
+      "file_sha256": "6265e5120c5b87a15bbed2689b3688f074717f32451cec600e34e85ee28718ad",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Verify an account change safely",
+          "page": 1
+        },
+        {
+          "heading": "2. Upgrade a residential plan",
+          "page": 1
+        },
+        {
+          "heading": "3. Downgrades and contact updates",
+          "page": 1
+        },
+        {
+          "heading": "4. Lost credentials and access questions",
+          "page": 2
+        },
+        {
+          "heading": "5. Supplied router or ONT replacement",
+          "page": 2
+        },
+        {
+          "heading": "6. Other requests and actual account status",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-GF-002",
+      "title": "Moving home and relocating fiber service",
+      "category": "general_faqs",
+      "topic": "relocation",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Customer Care",
+      "applies_to": "NovaFiber residential moves within a qualified service area",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-003",
+        "NF-GF-003",
+        "NF-EQ-004"
+      ],
+      "source_markdown": "sources/customer_approved/05_General_FAQs/Connection_Relocation_FAQ.md",
+      "source_pdf": "pdf/customer_approved/05_General_FAQs/Connection_Relocation_FAQ.pdf",
+      "source": "Connection_Relocation_FAQ.pdf",
+      "file_sha256": "7ab08177affc75fd68c787267f40dda04ea21d04b3c659ff7d29dec076b546a3",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Check the new address before planning a move",
+          "page": 1
+        },
+        {
+          "heading": "2. Request timing and standard charge",
+          "page": 1
+        },
+        {
+          "heading": "3. Handle equipment and optical connections safely",
+          "page": 1
+        },
+        {
+          "heading": "4. Coordinate service dates and billing",
+          "page": 2
+        },
+        {
+          "heading": "5. If the new address is not covered",
+          "page": 2
+        },
+        {
+          "heading": "6. Appointments and completion",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-GF-003",
+      "title": "New connection, installation, and appointment questions",
+      "category": "general_faqs",
+      "topic": "new_service_installation",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "customer_assistant",
+      "classification": "public",
+      "customer_chatbot_allowed": true,
+      "owner": "Customer Care",
+      "applies_to": "New NovaFiber residential fiber orders",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-BP-001",
+        "NF-BP-003",
+        "NF-EQ-002",
+        "NF-GF-002"
+      ],
+      "source_markdown": "sources/customer_approved/05_General_FAQs/New_Connection_FAQ.md",
+      "source_pdf": "pdf/customer_approved/05_General_FAQs/New_Connection_FAQ.pdf",
+      "source": "New_Connection_FAQ.pdf",
+      "file_sha256": "c0c50b91f3cda84db2fae24567dfa270430e4fb743a775d7d047c0afa0b918ad",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Qualify the address and place an order",
+          "page": 1
+        },
+        {
+          "heading": "2. Select a plan and confirm the quote",
+          "page": 1
+        },
+        {
+          "heading": "3. Prepare for the installation visit",
+          "page": 1
+        },
+        {
+          "heading": "4. Reschedule or report a missed appointment",
+          "page": 2
+        },
+        {
+          "heading": "5. Accept and check completed service",
+          "page": 2
+        },
+        {
+          "heading": "6. Failed qualification and cancellation before activation",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-SP-004",
+      "title": "Outage verification, updates, and customer communication",
+      "category": "support_operations",
+      "topic": "incident_communication",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "internal_support",
+      "classification": "internal",
+      "customer_chatbot_allowed": false,
+      "owner": "Network Operations",
+      "applies_to": "Fictional NovaFiber incident communications team",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-SP-001",
+        "NF-SP-002",
+        "NF-BP-003",
+        "NF-TS-002"
+      ],
+      "source_markdown": "sources/internal_only/04_Support_Operations/Outage_Communication_Guidelines.md",
+      "source_pdf": "pdf/internal_only/04_Support_Operations/Outage_Communication_Guidelines.pdf",
+      "source": "Outage_Communication_Guidelines.pdf",
+      "file_sha256": "416a59818dd776592eda6afd585357b3f5ae787554894abe1bf3d4610d903e87",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Static guidance is not current outage evidence",
+          "page": 1
+        },
+        {
+          "heading": "2. Verify before announcing an incident",
+          "page": 1
+        },
+        {
+          "heading": "3. Initial customer update structure",
+          "page": 1
+        },
+        {
+          "heading": "4. Ongoing and planned updates",
+          "page": 2
+        },
+        {
+          "heading": "5. Restoration and credit questions",
+          "page": 2
+        },
+        {
+          "heading": "6. Audit and chatbot boundary",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-SP-003",
+      "title": "Technician dispatch, visits, and field handoff",
+      "category": "support_operations",
+      "topic": "dispatch_and_appointments",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "internal_support",
+      "classification": "internal",
+      "customer_chatbot_allowed": false,
+      "owner": "Field Support",
+      "applies_to": "Fictional NovaFiber dispatch staff and authorized technicians",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-SP-001",
+        "NF-SP-002",
+        "NF-GF-003",
+        "NF-GF-002",
+        "NF-EQ-004"
+      ],
+      "source_markdown": "sources/internal_only/04_Support_Operations/Technician_Visit_Policy.md",
+      "source_pdf": "pdf/internal_only/04_Support_Operations/Technician_Visit_Policy.pdf",
+      "source": "Technician_Visit_Policy.pdf",
+      "file_sha256": "b8a78f5e0467dd677d961c576b0493eadb09178ef635bf4fc6b060c54df0d31a",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Internal scope and public policy alignment",
+          "page": 1
+        },
+        {
+          "heading": "2. Dispatch criteria after remote diagnosis",
+          "page": 1
+        },
+        {
+          "heading": "3. Prepare the appointment safely",
+          "page": 1
+        },
+        {
+          "heading": "4. Rescheduling and missed visits",
+          "page": 2
+        },
+        {
+          "heading": "5. Field evidence and equipment handling",
+          "page": 2
+        },
+        {
+          "heading": "6. Closure and follow-up",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-SP-001",
+      "title": "Ticket creation and diagnostic handoff",
+      "category": "support_operations",
+      "topic": "ticket_intake",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "internal_support",
+      "classification": "internal",
+      "customer_chatbot_allowed": false,
+      "owner": "Support Operations",
+      "applies_to": "Fictional NovaFiber staff workflow; not customer retrieval",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-SP-002",
+        "NF-SP-003",
+        "NF-SP-004",
+        "NF-TS-001",
+        "NF-BP-002"
+      ],
+      "source_markdown": "sources/internal_only/04_Support_Operations/Ticket_Creation_Guidelines.md",
+      "source_pdf": "pdf/internal_only/04_Support_Operations/Ticket_Creation_Guidelines.pdf",
+      "source": "Ticket_Creation_Guidelines.pdf",
+      "file_sha256": "103c4a9eff09e23a4aed56d09b3b3ab917f6bc8ec9050a505c76b869329337d0",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Scope and mandatory access boundary",
+          "page": 1
+        },
+        {
+          "heading": "2. Verify authority and minimize intake data",
+          "page": 1
+        },
+        {
+          "heading": "3. Categorize the issue accurately",
+          "page": 1
+        },
+        {
+          "heading": "4. Correlate before creating duplicates",
+          "page": 2
+        },
+        {
+          "heading": "5. Handoff and customer communication",
+          "page": 2
+        },
+        {
+          "heading": "6. Completion and audit record",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "article_id": "NF-SP-002",
+      "title": "Ticket priority, ownership, and escalation targets",
+      "category": "support_operations",
+      "topic": "severity_escalation",
+      "version": "1.0",
+      "status": "approved",
+      "audience": "internal_support",
+      "classification": "internal",
+      "customer_chatbot_allowed": false,
+      "owner": "Support Operations",
+      "applies_to": "Fictional NovaFiber internal support queue",
+      "effective_date": "2026-10-07",
+      "last_reviewed": "2026-10-07",
+      "next_review": "2027-01-07",
+      "related_article_ids": [
+        "NF-SP-001",
+        "NF-SP-003",
+        "NF-SP-004",
+        "NF-BP-002"
+      ],
+      "source_markdown": "sources/internal_only/04_Support_Operations/Ticket_Priority_and_Escalation.md",
+      "source_pdf": "pdf/internal_only/04_Support_Operations/Ticket_Priority_and_Escalation.pdf",
+      "source": "Ticket_Priority_and_Escalation.pdf",
+      "file_sha256": "a416cd19260fcaf447358c9d8517682141cb1db1357afea0850d3a3d383ffb6e",
+      "page_count": 2,
+      "sections": [
+        {
+          "heading": "1. Interpret targets correctly",
+          "page": 1
+        },
+        {
+          "heading": "2. P1 critical network incident",
+          "page": 1
+        },
+        {
+          "heading": "3. P2 individual service outage",
+          "page": 1
+        },
+        {
+          "heading": "4. P3 degraded service and P4 administration",
+          "page": 2
+        },
+        {
+          "heading": "5. Escalation triggers and ownership",
+          "page": 2
+        },
+        {
+          "heading": "6. Closure and customer-facing boundaries",
+          "page": 2
+        }
+      ]
+    }
+  ]
+}

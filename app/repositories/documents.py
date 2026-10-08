@@ -1,10 +1,11 @@
 import sqlite3
+import json
 from contextlib import contextmanager
 from pathlib import Path
 
 
 class DocumentRepository:
-    """Short-lived connections; service lock coordinates SQLite and Qdrant."""
+    """Store document records in SQLite."""
 
     def __init__(self, path: Path):
         self.path = path
@@ -14,9 +15,18 @@ class DocumentRepository:
                 document_id TEXT PRIMARY KEY, filename TEXT NOT NULL,
                 storage_path TEXT NOT NULL, file_sha256 TEXT NOT NULL,
                 uploaded_at TEXT NOT NULL, status TEXT NOT NULL,
-                chunk_count INTEGER NOT NULL DEFAULT 0, error TEXT
+                chunk_count INTEGER NOT NULL DEFAULT 0, error TEXT,
+                metadata_json TEXT NOT NULL DEFAULT '{}'
             )""")
             db.execute("CREATE INDEX IF NOT EXISTS documents_hash ON documents(file_sha256)")
+
+    @staticmethod
+    def record(row):
+        if row is None:
+            return None
+        record = dict(row)
+        record["metadata"] = json.loads(record.pop("metadata_json"))
+        return record
 
     @contextmanager
     def connect(self):
@@ -30,23 +40,24 @@ class DocumentRepository:
 
     def all(self) -> list[dict]:
         with self.connect() as db:
-            return [dict(row) for row in db.execute("SELECT * FROM documents ORDER BY uploaded_at DESC")]
+            return [self.record(row) for row in db.execute("SELECT * FROM documents ORDER BY uploaded_at DESC")]
 
     def get(self, document_id: str) -> dict | None:
         with self.connect() as db:
             row = db.execute("SELECT * FROM documents WHERE document_id = ?", (document_id,)).fetchone()
-            return dict(row) if row else None
+            return self.record(row)
 
     def duplicate(self, digest: str) -> dict | None:
         with self.connect() as db:
             row = db.execute("SELECT * FROM documents WHERE file_sha256 = ? AND status = 'ready'", (digest,)).fetchone()
-            return dict(row) if row else None
+            return self.record(row)
 
     def insert(self, record: dict):
         with self.connect() as db:
             db.execute("""INSERT INTO documents
-                (document_id, filename, storage_path, file_sha256, uploaded_at, status)
-                VALUES (:document_id, :filename, :storage_path, :file_sha256, :uploaded_at, :status)""", record)
+                (document_id, filename, storage_path, file_sha256, uploaded_at, status, metadata_json)
+                VALUES (:document_id, :filename, :storage_path, :file_sha256, :uploaded_at, :status, :metadata_json)""",
+                       {**record, "metadata_json": json.dumps(record.get("metadata", {}))})
 
     def update(self, document_id: str, status: str, count: int = 0, error: str | None = None):
         with self.connect() as db:

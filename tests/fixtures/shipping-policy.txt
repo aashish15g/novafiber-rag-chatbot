@@ -1,7 +1,0 @@
-DEMO SHIPPING POLICY
-
-Standard shipping takes 3 to 5 business days after dispatch. Express shipping takes 1 to 2 business days after dispatch. These estimates do not include order processing time.
-
-Order processing normally takes 2 business days. Shipping is free for orders of at least 75 dollars. Customers receive a tracking link by email when their order is dispatched.
-
-This is a synthetic policy created for testing Policy Desk. It does not describe any real business.

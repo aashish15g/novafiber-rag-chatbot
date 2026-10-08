@@ -1,15 +1,28 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Policy Desk · Policy library</title><link rel="stylesheet" href="/static/styles.css"><script type="module" src="/static/js/admin.js"></script></head>
-<body>
-<aside class="sidebar"><a class="brand" href="/"><span class="brand-mark">P</span> Policy Desk</a><div class="workspace-label">YOUR WORKSPACE</div><nav><a href="/"><span>◌</span> Ask a question</a><a class="active" href="/admin" aria-current="page"><span>▤</span> Policy library</a></nav><div class="sidebar-bottom"><span class="local-dot"></span> Local workspace<p>Your policies. Clear answers.</p></div></aside>
-<main><header class="topbar"><span>Customer support / <strong>Policy library</strong></span><span class="pill">Administrator · MVP</span></header>
-<section class="page"><div class="page-heading"><div><div class="eyebrow">KNOWLEDGE BASE</div><h1>Good answers start<br>with good policies.</h1><p>Build the library your assistant uses to answer.<br>Original documents and source details stay connected.</p></div><div class="heading-decoration" aria-hidden="true">▤</div></div>
-<div id="readiness" class="notice" role="status">Connecting to your policy workspace…</div>
-<div class="stats"><div><span id="document-count">0</span><p>Indexed documents</p></div><div><span id="chunk-count">0</span><p>Searchable passages</p></div><div><span>PDF / TXT</span><p>Supported formats</p></div></div>
-<form id="upload-form" class="upload-card"><div class="upload-icon">↑</div><h2>Add a policy document</h2><p>Text-based PDFs and UTF-8 text files. Up to <span id="upload-limit">10</span> MB per file.</p><label for="policy-file" class="sr-only">Choose policy file</label><input id="policy-file" type="file" accept=".pdf,.txt" required><button id="upload" class="primary" type="submit" disabled>Upload & index <span>↗</span></button><p class="fine-print">Scanned PDFs require OCR and are not supported yet.</p><div id="upload-status" role="status"></div></form>
-<div class="section-heading"><h2>Your documents</h2><button id="refresh" class="quiet" type="button">↻ Refresh</button></div><div id="library" class="library" aria-live="polite"></div>
-<details class="debug-panel"><summary>Retrieval inspector <span>DEVELOPER TOOL</span></summary><p>Check which passages match a question before generating an answer.</p><form id="retrieve-form"><label for="retrieve-question" class="sr-only">Retrieval question</label><input id="retrieve-question" maxlength="2000" placeholder="What is the return window?" required><button type="submit" class="secondary">Find passages</button></form><div id="retrieval-results"></div></details>
-<p class="fine-print">Local learning MVP. These screens do not enforce roles yet; JWT authentication comes next.</p>
-</section></main>
-</body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b3b">
+  <title>NovaFiber · Knowledge workspace</title>
+  <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script type="module" src="/static/js/admin.js?v=3"></script>
+</head>
+<body class="admin-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main-content" class="container workspace">
+    <header class="workspace-heading"><div><p class="eyebrow">NOVAFIBER / TEAM WORKSPACE</p><h1>Better support starts<br>with better knowledge.</h1><p>Manage the service documents behind Nova’s answers.<br>Keep every passage connected to its original source.</p></div><span class="workspace-emblem" aria-hidden="true"><svg class="icon"><use href="/static/assets/icons.svg#document"></use></svg></span></header>
+    <div id="readiness" class="notice" role="status">Connecting to the NovaFiber knowledge workspace…</div>
+    <div class="stats"><div><span class="stat-label">POLICY LIBRARY</span><strong id="document-count">0</strong><p>Documents ready for Nova</p></div><div><span class="stat-label">SEARCHABLE KNOWLEDGE</span><strong id="chunk-count">0</strong><p>Passages with source details</p></div><div><span class="stat-label">SUPPORTED DOCUMENTS</span><strong class="format-stat">PDF <span>/</span> TXT</strong><p>Text-based files, original sources retained</p></div></div>
+    <div class="workspace-grid">
+      <section class="upload-section" aria-labelledby="upload-title"><div class="section-heading"><h2 id="upload-title">Add to the knowledge base</h2></div><form id="upload-form" class="upload-card"><span class="upload-icon" aria-hidden="true"><svg class="icon"><use href="/static/assets/icons.svg#upload"></use></svg></span><h3>A policy today.<br>A clearer answer tomorrow.</h3><p>Add NovaFiber service terms, billing policies,<br>installation guides, or troubleshooting documents.</p><label for="policy-file" class="file-label">Choose a PDF or TXT document</label><input id="policy-file" type="file" accept=".pdf,.txt" required><p class="upload-limit">Up to <span id="upload-limit">10</span> MB · UTF-8 text or text-based PDF</p><button id="upload" class="primary" type="submit" disabled>Upload & index <svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#arrow"></use></svg></button><div id="upload-status" role="status"></div></form><p class="workspace-note">Scanned PDFs need OCR before upload. Only fully indexed documents are available to Nova.</p></section>
+      <section class="library-section" aria-labelledby="library-title"><div class="section-heading"><div><h2 id="library-title">Service documents</h2><p>The policies your assistant can reference.</p></div><button id="refresh" class="quiet" type="button"><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#refresh"></use></svg> Refresh</button></div><div id="library" class="library" aria-live="polite"></div></section>
+    </div>
+    <details class="debug-panel"><summary><span><svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#search"></use></svg> Test a customer question</span><span class="inspector-label">RETRIEVAL INSPECTOR</span></summary><p>See the source passages Nova would use before generating an answer.</p><form id="retrieve-form"><label for="retrieve-question" class="sr-only">Retrieval question</label><input id="retrieve-question" maxlength="2000" placeholder="What happens if I need to reschedule my installation?" required><button type="submit" class="secondary">Find passages <svg class="icon" aria-hidden="true"><use href="/static/assets/icons.svg#search"></use></svg></button></form><div id="retrieval-results"></div></details>
+    <p class="workspace-note workspace-boundary">Demo workspace · Team access is not authenticated yet. Use public or fictional company documents.</p>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>
