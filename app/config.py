@@ -14,7 +14,11 @@ class Settings(BaseSettings):
     embedding_model: str = "Qwen/Qwen3-Embedding-0.6B"
     embedding_device: str = "cpu"
     gemini_api_key: str = ""
-    gemini_model: str = "gemini-3.1-flash-lite"
+    gemini_model: str = "gemini-3.8-flash"
+    gemini_fallback_model: str = "gemini-3.5-flash-lite"
+    jwt_secret: str = ""
+    access_token_expire_minutes: int = Field(default=30, ge=1, le=1440)
+    cookie_secure: bool = False
     chunk_size_tokens: int = Field(default=400, ge=20, le=4096)
     chunk_overlap_tokens: int = Field(default=60, ge=0)
     retrieval_top_k: int = Field(default=5, ge=1, le=20)

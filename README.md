@@ -53,6 +53,21 @@ Set `GEMINI_API_KEY` to your own key. The sample model is
 Environment variables and `.env` override defaults in `app/config.py`.
 Restart the server after changing them. Never commit a real key.
 
+Generate a JWT signing secret and paste it into `JWT_SECRET` in `.env`:
+
+```powershell
+.\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_urlsafe(48))"
+```
+
+Create an administrator account locally; the command asks for a password privately:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/create_admin.py --email admin@example.com
+```
+
+Use your own email and password. Public registration creates normal users only.
+There is no default administrator or preset password.
+
 Run:
 
 ```powershell
@@ -64,11 +79,16 @@ You can add `--reload` during development. Use one worker: embedded Qdrant requi
 a single server process.
 
 - Customer chat: <http://127.0.0.1:8000/>
+- Sign in / register: <http://127.0.0.1:8000/login>
 - Document workspace: <http://127.0.0.1:8000/admin>
 - API docs: <http://127.0.0.1:8000/docs>
 
 The first startup downloads Qwen into `data/models`, so it requires internet,
 disk space, and sufficient RAM. The UI shows loading/readiness status.
+If startup reports Windows error **1455** (paging file too small), close
+memory-heavy applications and restart the server without `--reload`. Questions
+cannot run until `/api/ready` returns `ready: true`. A Gemini 503 after readiness
+is a separate provider failure.
 To download the model separately:
 
 ```powershell
@@ -79,11 +99,21 @@ Embedding inference runs locally without an embedding API charge. Once the model
 is fully cached, `$env:HF_HUB_OFFLINE = "1"` enables offline Hugging Face loading.
 Gemini generation still requires internet and is subject to provider pricing,
 quotas, and availability.
+Generation tries `gemini-3.8-flash` first, then `gemini-3.5-flash-lite` once if
+the primary returns HTTP 429, 503, or 504, or the request times out. Set these using
+`GEMINI_MODEL` and `GEMINI_FALLBACK_MODEL` in `.env`. Each model has a 60-second
+timeout and one attempt, with automatic function calling disabled. Both attempts
+can take about 120 seconds in total. Authentication and invalid-answer errors do
+not trigger fallback. If both models fail, the chat shows the fallback error.
+Errors distinguish client timeouts, Google gateway timeouts, confirmed high demand,
+temporary unavailability, quota/rate limits, and model/key permission problems.
+The same diagnosis is written to the terminal without logging raw provider responses,
+API keys, or policy text. HTTP 503 alone does not prove overload.
 
 With the server ready, upload the customer PDFs or run:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/ingest_knowledge_base.py
+.\.venv\Scripts\python.exe scripts/ingest_knowledge_base.py --email admin@example.com
 ```
 
 Original files, SQLite records, vectors, and model caches are created locally;
@@ -115,11 +145,11 @@ app/
   api/                   Document, chat, health, and page routers
   services/              Extraction, chunking, embeddings, vector storage,
                          metadata lookup, generation, and RAG coordination
-  repositories/          SQLite document records
+  repositories/          SQLite documents, users, and shared connections
 frontend/                HTML, CSS, and JavaScript
 knowledge_base/          Fictional policies, PDFs, registry, and sample questions
 scripts/                 Corpus upload, model download, and PDF authoring
-tests/                   Six basic request tests
+tests/                   Request and authentication tests
 docs/architecture.md     Flow diagram, decisions, and trade-offs
 ```
 
@@ -144,6 +174,9 @@ The existing PDFs are included, so this authoring step is not needed to run the 
 | GET | `/api/documents/{id}/chunks/{chunk_id}` | Passage text and highlighting offsets |
 | POST | `/api/retrieve` | Search passages |
 | POST | `/api/chat` | Answer with citations |
+| POST | `/api/auth/register`, `/api/auth/login` | Create a normal account / sign in |
+| GET | `/api/auth/me` | Current user and role |
+| POST | `/api/auth/logout` | Clear authentication cookies |
 
 Retrieval and chat accept `{"question": "How can I troubleshoot slow Wi-Fi?"}`.
 Uploads use multipart field `file`.
@@ -154,24 +187,33 @@ Uploads use multipart field `file`.
 
 Tests use real temporary SQLite/Qdrant storage and lightweight model substitutes.
 They cover routes, upload/retrieve/chat/delete, PDF metadata, basic invalid input,
-duplicate uploads, readiness, and citation cards. They do not call live Gemini or
+duplicate uploads, readiness, citation cards, and authentication/role checks. They do not call live Gemini or
 measure real embedding quality. Sample retrieval questions are in
 `knowledge_base/retrieval_questions.json`; they are evaluation data, not documents
 to upload.
 
 ## Current limits and future work
 
-This is a localhost learning MVP, not a production deployment. The administrator
-and customer pages are separate workflows without login or enforced roles.
+This is a localhost learning MVP, not a production deployment. Login uses an
+Argon2 password hash and a signed JWT in an HttpOnly, SameSite=Lax cookie.
+Tokens expire after 30 minutes by default. The role is read from SQLite on each
+protected request. JavaScript sends a CSRF header for state-changing requests;
+the token is checked against the signed JWT, and cross-origin writes are rejected.
+
+Admins can upload, list, delete, and inspect documents. Normal users can chat and
+open source citations, including original files in another tab. Both roles must
+sign in. Logout clears the browser cookies; a copied JWT remains valid until
+expiry. Refresh tokens, server-side revocation, password resets, and login rate
+limiting are not implemented. Use HTTPS and `COOKIE_SECURE=true` before hosting.
 Extraction needs selectable text; OCR, conversation memory, live outages, and
 customer account access are not implemented.
 
 One lock serializes local RAG operations; uploads can delay searches. Basic cleanup
-marks failed uploads, but there is no startup recovery, queue, retry/backoff system,
-or model fallback. Changing chunk/model settings requires re-ingestion to update
+marks failed uploads, but there is no startup recovery, queue, or retry/backoff system.
+Changing chunk/embedding model settings requires re-ingestion to update
 existing vectors. Stop the app before backing up `data/uploads`,
 `data/app.sqlite3`, and `data/qdrant` together.
 
-Planned work includes authenticated roles, measured retrieval improvements, and
+Planned work includes measured retrieval improvements and
 customer-authorized support ticket creation and tracking. These features are not
 implemented yet.

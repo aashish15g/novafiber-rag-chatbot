@@ -1,8 +1,16 @@
 export async function api(url, options = {}) {
-  const response = await fetch(url, options);
+  const headers = new Headers(options.headers);
+  if (options.method && !['GET', 'HEAD'].includes(options.method.toUpperCase())) {
+    const csrf = document.cookie.split('; ').find(cookie => cookie.startsWith('csrf_token='));
+    if (csrf) headers.set('X-CSRF-Token', decodeURIComponent(csrf.split('=')[1]));
+  }
+  const response = await fetch(url, {...options, headers, credentials: 'same-origin'});
   if (response.status === 204) return null;
   const data = await response.json();
   if (!response.ok) {
+    if (response.status === 401 && !url.startsWith('/api/auth/login') && !url.startsWith('/api/auth/register')) {
+      location.assign('/login?next=' + encodeURIComponent(location.pathname));
+    }
     const detail = data.detail;
     const error = new Error(typeof detail === 'string' ? detail : 'The request could not be completed. Check your input and try again.');
     error.status = response.status;
@@ -16,6 +24,15 @@ export function element(tag, className, text) {
   if (className) node.className = className;
   if (text !== undefined) node.textContent = text;
   return node;
+}
+
+export function renderAnswer(container, text) {
+  // Render bold labels while keeping all model content as text, never HTML.
+  const nodes = text.split(/(\*\*[^*\n]+\*\*)/g).map(part =>
+    part.startsWith('**') && part.endsWith('**') && part.length > 4
+      ? element('strong', '', part.slice(2, -2))
+      : document.createTextNode(part));
+  container.replaceChildren(...nodes);
 }
 
 export function sourceCard(source, score) {
@@ -53,7 +70,7 @@ export function icon(name) {
   return node;
 }
 
-export function mountShell({admin = false} = {}) {
+export function mountShell({admin = false, authPage = false} = {}) {
   const header = element('header', 'site-header');
   const inner = element('div', 'container header-inner');
   const brand = element('a', 'brand');
@@ -81,7 +98,7 @@ export function mountShell({admin = false} = {}) {
   const footer = element('footer', 'site-footer');
   const footerInner = element('div', 'container footer-inner');
   const footerLinks = element('div', 'footer-links');
-  [['Support center', '/'], ['Team workspace', '/admin']].forEach(([label, href]) => {
+  [['Support center', '/']].forEach(([label, href]) => {
     const link = element('a', '', label);
     link.href = href;
     footerLinks.append(link);
@@ -89,6 +106,25 @@ export function mountShell({admin = false} = {}) {
   footerInner.append(element('p', 'footer-note', 'NovaFiber · A fictional broadband company.'), footerLinks);
   footer.append(footerInner);
   document.getElementById('site-footer').replaceChildren(footer);
+  if (!authPage) {
+    api('/api/auth/me').then(user => {
+      nav.append(element('span', 'account-label', user.email));
+      if (user.role === 'admin' && !admin) {
+        const workspace = element('a', '', 'Workspace');
+        workspace.href = '/admin';
+        nav.append(workspace);
+      }
+      const logout = element('button', 'quiet', 'Sign out');
+      logout.type = 'button';
+      logout.addEventListener('click', async () => {
+        try {
+          await api('/api/auth/logout', {method: 'POST'});
+          location.assign('/login');
+        } catch (error) { logout.textContent = error.message; }
+      });
+      nav.append(logout);
+    }).catch(() => {});
+  }
 }
 
 export function watchReadiness(callback, {admin = false} = {}) {

@@ -1,4 +1,4 @@
-import {api, element, mountShell, sourceCard, watchReadiness} from './common.js';
+import {api, element, mountShell, renderAnswer, sourceCard, watchReadiness} from './common.js';
 
 mountShell();
 
@@ -43,16 +43,15 @@ form.addEventListener('submit', async event => {
   answer.scrollIntoView({block: 'nearest'});
   try {
     const result = await api('/api/chat', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({question})});
-    answer.querySelector('.answer-copy').textContent = result.answer;
+    renderAnswer(answer.querySelector('.answer-copy'), result.answer);
     if (result.sources.length) {
       const sources = element('div', 'sources');
       result.sources.forEach(source => sources.append(sourceCard(source)));
       answer.append(sources);
     }
   } catch (error) {
-    answer.querySelector('.answer-copy').textContent = error.status >= 500
-      ? 'Nova couldn’t get an answer right now. Please try again in a moment.'
-      : error instanceof TypeError ? 'We couldn’t reach Nova. Check your connection and try again.' : error.message;
+    answer.querySelector('.answer-copy').textContent = error instanceof TypeError
+      ? 'We couldn’t reach Nova. Check your connection and try again.' : error.message;
     answer.classList.add('error-text');
     const retry = element('button', 'secondary', 'Retry this question');
     retry.type = 'button';

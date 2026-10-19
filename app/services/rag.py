@@ -3,6 +3,7 @@ import logging
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
+from time import perf_counter
 from uuid import uuid4
 
 from qdrant_client import models
@@ -35,9 +36,12 @@ class RagService:
         try:
             self.embeddings.load()
             self.ready = True
-        except Exception:
+        except Exception as exc:
             logging.exception("Embedding model could not load")
-            self.startup_error = "Could not load the embedding model. Check the server log and restart."
+            self.startup_error = (
+                "Windows ran out of virtual memory while loading Qwen (1455). Close memory-heavy apps, then restart the server."
+                if "1455" in str(exc)
+                else "Could not load the embedding model. Check the server log and restart.")
 
     def require_ready(self):
         if not self.ready:
@@ -175,7 +179,10 @@ class RagService:
                 "source_url": self.source_url(document_id, p["page_number"])}
 
     def chat(self, question):
+        started = perf_counter()
         passages = self.retrieve(question)
+        logging.info("Chat retrieval completed: passages=%d, elapsed_seconds=%.2f",
+                     len(passages), perf_counter() - started)
         if not passages:
             return {"answer": "No policy documents are available yet.", "sources": [], "status": "no_documents"}
         answer, ids = self.generator.generate(question, passages)

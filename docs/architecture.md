@@ -51,16 +51,38 @@ tracks the document record and the original file stays in local storage.
 - One local lock coordinates ingestion, retrieval, and deletion.
 - Blocking model/database calls remain in synchronous FastAPI routes, which run
   in a thread pool. Async is used for upload reads and application lifecycle.
-- Gemini uses one model and one attempt. Citation validation rejects source IDs
+- Gemini tries 3.8 Flash first and 3.5 Flash-Lite once on a timeout, HTTP 429,
+  503, or 504. Each model has a 60-second timeout with no automatic retries.
+  Citation validation rejects source IDs
   that are not in the retrieved passages. Source cards also work without inline labels.
 - Frontend helpers share API calls, source cards, and the NovaFiber shell.
 
-The six tests check basic request behavior with isolated storage and model
+The tests check basic request and authorization behavior with isolated storage and model
 substitutes. They avoid live network calls and failure-injection machinery.
 
-This is a single-process local MVP. It has no authenticated roles, queues,
-automatic model fallback, backoff logic, or startup reconciliation. Explain
+This is a single-process local MVP. It has no queues,
+backoff logic or startup reconciliation. Explain
 these boundaries before describing future features in an interview.
+
+## Authentication and roles
+
+`repositories/users.py` stores users in the existing SQLite database. Passwords
+are hashed with Argon2. `services/auth.py` contains four functions: hash a password,
+verify a password, create an access token, and verify an access token.
+
+`api/auth.py` handles registration, login, current-user lookup, and logout.
+Registration always assigns the `user` role; `scripts/create_admin.py` creates
+administrators locally. Login puts a 30-minute JWT in an HttpOnly cookie, so
+same-origin citation tabs can authenticate without putting tokens in URLs.
+
+`api/dependencies.py` verifies the JWT and reads the current role from SQLite.
+Admins manage documents and use the retrieval inspector; both roles can chat and
+read sources. Cookie-authenticated writes require a CSRF header matching the
+signed token. Cross-origin writes are rejected. Frontend buttons reflect the role,
+but the API enforces permissions.
+
+Logout clears cookies. Tokens are not revoked server-side and expire normally;
+refresh tokens, password recovery, and login rate limiting are outside this local MVP.
 
 ## Engineering Design Decisions and Trade-offs
 
@@ -121,5 +143,4 @@ The company and policies are fictional. The implemented app answers policy quest
 and provides source links; it cannot access customer accounts or live outages.
 
 My longer-term goal is to add agentic AI features for customer-authorized support
-ticket creation and ticket tracking. These are planned features, along with login
-and backend permissions; none of them is implemented yet.
+ticket creation and ticket tracking. Those ticket features are planned, not implemented.

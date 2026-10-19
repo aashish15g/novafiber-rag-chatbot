@@ -7,3 +7,5 @@ pypdf
 google-genai
 pytest
 httpx
+PyJWT
+pwdlib[argon2]

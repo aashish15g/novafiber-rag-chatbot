@@ -25,7 +25,7 @@ Ingestion matches known PDF hashes to registry entries and stores their article 
 
 Citation cards open a reader that highlights the saved character range within extracted page text and links to the original PDF page. It does not annotate the PDF. A text-match check ensures the highlighted text still matches the stored excerpt.
 
-With the local server ready, run `python scripts/ingest_knowledge_base.py`. The script uploads customer-approved PDFs; duplicate hashes prevent repeated ingestion. It uses local embeddings without calling Gemini.
+With the local server ready, run `python scripts/ingest_knowledge_base.py --email admin@example.com` using your administrator email. The script prompts privately for the password and uploads customer-approved PDFs; duplicate hashes prevent repeated ingestion. It uses local embeddings without calling Gemini.
 
 The actual splitter uses 400-token windows with 60-token overlap by default; it is not the character-based splitter mentioned in the supplied reference. PDF sections pair conditions with actions and use selectable single-column text. Inspect actual chunks before changing splitter parameters.
 

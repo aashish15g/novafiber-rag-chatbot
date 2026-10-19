@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b3b">
+  <title>NovaFiber · Sign in</title>
+  <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script type="module" src="/static/js/login.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="auth-page container">
+    <section class="auth-card" aria-labelledby="auth-title">
+      <p class="eyebrow">NOVAFIBER / YOUR SUPPORT CENTER</p>
+      <h1 id="auth-title">Welcome back.</h1>
+      <p id="auth-description">Sign in for help with your home internet.</p>
+      <form id="auth-form">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="username" maxlength="254" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" minlength="1" maxlength="128" required>
+        <button id="auth-submit" class="primary" type="submit">Sign in</button>
+        <p id="auth-status" class="error-text" role="status"></p>
+      </form>
+      <button id="auth-switch" class="quiet" type="button">New here? Create an account</button>
+      <p class="auth-note">NovaFiber is a fictional broadband company. Use a unique password for this demo.</p>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>
